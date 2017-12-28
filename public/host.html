@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+
+    <title>Host!</title>
+    <link rel="stylesheet" href="/bower_components/materialize/dist/css/materialize.css">
+    <link rel="stylesheet" href="/assets/css/host.css">
+</head>
+<body>
+
+    <nav>
+        <div class="nav-wrapper">
+            <span href="#" class="brand-logo center" id="header">Offline</span>
+        </div>
+    </nav>
+
+    <div class="page" id="createGame">
+        <div class="center-block">
+            <a id="create_game" class="waves-effect waves-light btn-large"><i class="mdi-content-add left"></i>Create Game</a></i></a>
+        </div>
+    </div>
+    <div class="page row" id="peopleJoining">
+        <div class="col s12 m8 l4" id="pages">
+            <h1 id="roomCode"></h1><br>
+            <h4>Messages:</h4>
+            <ul class="collection" id="announcements"></ul>
+        </div>
+        <div class="col s12 m3 l8">
+            <h3>People in the game so far:</h3>
+            <ul class="collection" id="side_scoreboard"></ul>
+        </div>
+    </div>
+    <div class="page" id="busyDrawing">
+        <div class="time-container">
+            <p id="timeLeft"></p>
+        </div>
+    </div>
+    <div class="page row" id="guessingRound">
+
+        <div class="col l4 people-with-descriptions-container left">
+        </div>
+        <div class="col l4">
+            <h3 class="guess-image-title">What do you think it is?</h3>
+            <img class="guess-image" width="400" />
+        </div>
+        <div class="col l4 people-with-descriptions-container right">
+        </div>
+    </div>
+
+    <div class="page row" id="showDescriptions">
+        <div class="col l4 description-container left">
+        </div>
+        <div class="col l4">
+            <h3 class="guess-image-title">What do you think it is?</h3>
+            <img class="guess-image" width="400" />
+        </div>
+        <div class="col l4 description-container right">
+        </div>
+    </div>
+    <div class="page" id="showGuesses">
+        <ul class="guessers"></ul>
+        <h3 class="phrase"></h3>
+        <h3 class="guessedFor"></h3>
+    </div>
+    <div class="page" id="scoreDisplay">
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+            <tbody class="scores"></tbody>
+        </table>
+    </div>
+    <div class="page" id="disconnect">
+        <h3>Sorry, but the server disconnected. It probably crashed in a steaming heap.</h3>
+    </div>
+
+    <script src="/node_modules/socket.io-client/dist/socket.io.js"></script>
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/drawingboard.js/dist/drawingboard.nocontrol.min.js"></script>
+    <script src="/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+    <script src="/node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="/assets/js/host.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+    <title>Drawsome</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta content="yes" name="mobile-web-app-capable">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+
+    <link rel="stylesheet" href="/bower_components/drawingboard.js/dist/drawingboard.nocontrol.min.css">
+    <link rel="stylesheet" href="/bower_components/materialize/dist/css/materialize.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper">
+            <span href="#" class="brand-logo center" id="header"></span>
+        </div>
+    </nav>
+    <div id="overlay">
+    </div>
+    <div id="instructions-container">
+        <p id="instructions"></p>
+    </div>
+    <div id="drawingArea"></div>
+    <div class="draw-button-container">
+        <button id="lightColorButton" class="color-button selected"></button>
+        <button id="darkColorButton" class="color-button dark"></button>
+        <button id="sendDrawing" class="btn">Draw!</button>
+    </div>
+    <div id="makeDescription">
+        <input id="description" type="text" />
+        <button id="sendDescription" class="btn">Send!</button>
+    </div>
+    <div class="collection" id="guesses">
+    </div>
+    <div class="vip-buttons">
+        <p>
+            You're the VIP. Press start when everybody has joined the game.
+        </p>
+        <button id="startGame" class="btn">Start Game!</button>
+    </div>
+    <div class="waiting-area">
+        <p>
+            There are other people joining. If you want the game to start go bug the person who joined first.
+        </p>
+    </div>
+    <ul id="messages"></ul>
+
+    <div id="disconnect">
+        <h3>Sorry, but the server disconnected. It probably crashed in a steaming heap.</h3>
+    </div>
+
+    <div class="row">
+        <form class="col s6" id="initialForm" action="">
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="mdi-action-account-circle prefix"></i>
+                    <input type="text" class="validate" name="username" id="username">
+                    <label for="username">Display Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="mdi-maps-pin-drop prefix"></i>
+                    <input type="text" class="validate" name="room" id="room">
+                    <label for="room">Room ID</label>
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                <i class="mdi-content-send right"></i>
+            </button>
+        </form>
+    </div>
+
+<!-- <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script> -->
+    <script src="/node_modules/socket.io-client/dist/socket.io.js"></script>
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/drawingboard.js/dist/drawingboard.nocontrol.min.js"></script>
+    <script src="/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+    <script src="/assets/js/player.js"></script>
+</body>
+</html>

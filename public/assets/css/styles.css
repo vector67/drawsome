@@ -1,0 +1,105 @@
+nav {
+    display: none;
+    border-bottom:5px dotted black;
+    box-shadow: none;
+    z-index: 22;
+    position: relative;
+}
+#guesses {
+    display: none;
+}
+#overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 21;
+    display: none;
+    background-color: white;
+}
+
+#instructions-container{
+    max-width: 400px;
+    margin: auto;
+}
+#drawingArea {
+    width: 100%;
+    max-width: 300px;
+    height: 80%;
+    max-height: 500px;
+    margin: auto;
+    display: none;
+}
+
+#sendDrawing {
+    position: absolute;
+    right: 0px;
+    margin-right: 0px;
+}
+
+#avatarDraw {
+    width:100%;
+    max-width: 300px;
+    margin: auto;
+    height:400px;
+}
+
+#initialForm {
+    max-width: 400px;
+    width: 90%;
+    margin: auto;
+    float: none;
+}
+
+#room {
+    text-transform: uppercase;
+}
+
+#makeDescription {
+    display: none;
+    max-width: 400px;
+    margin: auto;
+}
+.draw-button-container {
+    width: 100%;
+    max-width: 300px;
+    text-align: left;
+    margin: auto;
+    position: relative;
+    display: none;
+}
+
+.draw-button-container button {
+    margin: 10px;
+}
+
+.color-button {
+    width: 40px;
+    height: 30px;
+    border: 3px solid white;
+    border-radius: 2px;
+}
+
+.color-button.selected {
+    border: 3px solid black;
+}
+
+.color-button.dark.selected {
+    /*border-color: white;*/
+}
+.waiting-area {
+}
+.vip-buttons, .waiting-area {
+    display: none;
+    max-width: 400px;
+    margin: auto;
+}
+
+#disconnect {
+    display: none;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    z-index: 22;
+}

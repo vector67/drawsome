@@ -1,0 +1,747 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"data",
+				"data"
+			],
+			[
+				"cust",
+				"loadCustomWords"
+			],
+			[
+				"peop",
+				"peopleGuessed"
+			],
+			[
+				"ad",
+				"adjectives"
+			],
+			[
+				"current",
+				"currentColorBlue"
+			],
+			[
+				"draw",
+				"drawTimeLeft"
+			],
+			[
+				"swapT",
+				"swapToDarkColor"
+			],
+			[
+				"matching",
+				"matching_clients_box"
+			],
+			[
+				"first_nam",
+				"first_name_metaphone"
+			],
+			[
+				"first",
+				"first_name"
+			],
+			[
+				"total",
+				"total_input"
+			],
+			[
+				"perm",
+				"permutations_of_outputs"
+			],
+			[
+				"owner",
+				"owner_inputs"
+			],
+			[
+				"permut",
+				"permutations_of_inputs"
+			],
+			[
+				"permu",
+				"permutation"
+			],
+			[
+				"valid",
+				"valid_transactions"
+			],
+			[
+				"transac",
+				"transaction_tokens"
+			],
+			[
+				"transact",
+				"transactions_unordered"
+			],
+			[
+				"numbe",
+				"number_of_accounts"
+			],
+			[
+				"l_",
+				"l_neighbour\tlabel"
+			],
+			[
+				"starting",
+				"startingBlockAvailableSpace"
+			],
+			[
+				"space",
+				"spaceAvailable"
+			],
+			[
+				"number",
+				"numberOfBlocks"
+			],
+			[
+				"visit",
+				"visitorRoomLock"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.js",
+			"settings":
+			{
+				"buffer_size": 23503,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public/assets/js/player.js",
+			"settings":
+			{
+				"buffer_size": 6492,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public/host.html",
+			"settings":
+			{
+				"buffer_size": 2255,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public/assets/js/host.js",
+			"settings":
+			{
+				"buffer_size": 4849,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public/assets/css/host.css",
+			"settings":
+			{
+				"buffer_size": 522,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public/assets/css/styles.css",
+			"settings":
+			{
+				"buffer_size": 1158,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public/index.html",
+			"settings":
+			{
+				"buffer_size": 3190,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Makefile/Make.sublime-build",
+					""
+				],
+				[
+					"Packages/Makefile/Make.sublime-build",
+					"Clean"
+				]
+			],
+			[
+				"Packages/Makefile/Make.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 119.0,
+		"last_filter": "Package Control: install",
+		"selected_items":
+		[
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 476.0
+	},
+	"console":
+	{
+		"height": 143.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/admin/Programming/drawful/drawgly",
+		"/Users/admin/Programming/drawful/drawgly/pos",
+		"/Users/admin/Programming/drawful/drawgly/pos/adjectives",
+		"/Users/admin/Programming/drawful/drawgly/pos/adverbs",
+		"/Users/admin/Programming/drawful/drawgly/pos/nouns",
+		"/Users/admin/Programming/drawful/drawgly/pos/verbs",
+		"/Users/admin/Programming/drawful/drawgly/public",
+		"/Users/admin/Programming/drawful/drawgly/public/assets",
+		"/Users/admin/Programming/drawful/drawgly/public/assets/css",
+		"/Users/admin/Programming/drawful/drawgly/public/assets/images",
+		"/Users/admin/Programming/drawful/drawgly/public/assets/js",
+		"/Users/admin/Programming/drawful/drawgly/public/templates"
+	],
+	"file_history":
+	[
+		"/Users/admin/Programming/drawful/drawgly/pos/adjectives/list.txt",
+		"/Users/admin/Programming/drawful/drawgly/pos/nouns/list.txt",
+		"/Users/admin/Programming/drawful/drawgly/pos/adverbs/list.txt",
+		"/Users/admin/Programming/drawful/drawgly/pos/adjectives/newAdjectives-top1000.txt",
+		"/Users/admin/Programming/drawful/drawgly/public/sort_words.html",
+		"/Users/admin/Programming/drawful/drawgly/public/assets/css/host.css",
+		"/Users/admin/Programming/drawful/drawgly/public/templates/user_sidebar.hbs",
+		"/Users/admin/Downloads/hmm_treebank_pos_tagger/unpicklethis.py",
+		"/Users/admin/Programming/drawful/drawgly/public/assets/css/styles.css",
+		"/Users/admin/Programming/drawful/drawgly/public/assets/js/host.js",
+		"/Users/admin/Programming/drawful/drawgly/public/host.html",
+		"/Users/admin/Programming/drawful/drawgly/public/index.html",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/assets/sass/theme.scss",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/routes/web.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/assets/js/components/Utility.js",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/app/Http/Controllers/ClientController.php",
+		"/Users/admin/Programming/oreos/Assets/js/menu.js",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/views/event.blade.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/assets/js/components/ClientCreation.js",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/app/Http/Controllers/AjaxController.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/assets/sass/_custom.scss",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/assets/js/app.js",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/app/Http/Controllers/EventController.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/database/seeds/UsersTableSeeder.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/.gitignore",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/assets/js/components/UserCreation.js",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/views/clients/create.blade.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/views/clients/index.blade.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/views/Client/index.blade.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/database/seeds/DatabaseSeeder.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/views/layouts/app.blade.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/views/Quote/create.blade.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/app/Models/Client.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/composer.json",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/assets/js/bootstrap.js",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/views/email.blade.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/database/migrations/2017_12_06_081916_create_event_meta_table.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/database/seeds/EventTableSeeder.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/vendor/composer/autoload_static.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/views/Quote/index.blade.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/app/Http/Controllers/QuoteController.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/views/quote_index.blade.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/assets/js/components/Datatables.js",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/assets/sass/app.scss",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/database/migrations/2017_12_08_084612_create_quote.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/database/migrations/2017_11_25_113542_create_follow_up_interest_table.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/app/Quote.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/webpack.mix.js",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/database/migrations/2017_11_25_110520_create_conversation_table.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/database/migrations/2017_11_25_112020_create_attendees_table.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/database/migrations/2017_12_03_133126_create_emails_table.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/public/css/.gitignore",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/public/js/.gitignore",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/.env",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/database/migrations/2017_11_25_111339_create_events_table.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/database/migrations/2017_12_05_121913_create_scheduled_block_table.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/app/Http/Controllers/FileUploadController.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/database/migrations/2017_12_06_081916_create_event_files_table.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/database/migrations/2017_11_25_111517_create_booking_table.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/database/migrations/2017_11_25_121137_create_enquiry_table.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/database/migrations/2017_11_25_112750_create_follow_ups_table.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/app/Http/Controllers/MailController.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/database/migrations/2017_11_25_111518_create_attendees_table.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/node_modules/bootstrap/scss/_variables.scss",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/views/home.blade.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/database/migrations/2017_12_01_094441_create_payments_table.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/views/auth/login.blade.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/views/auth/register.blade.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/views/auth/passwords/email.blade.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/views/auth/passwords/reset.blade.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/config/auth.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/app/Http/Controllers/Auth/RegisterController.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/app/Http/Controllers/Auth/LoginController.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/views/login.blade.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/app/Http/Controllers/LogInController.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/package.json",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/app/Http/Controllers/PaymentController.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/assets/js/components/App.jsx",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/app/Payment.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/app/Models/Accreditation.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/app/Models/CustomUser.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/app/Models/Company.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/assets/js/components/Upload.jsx",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/app/Models/User.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/app/Models/Attendee.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/app/Models/Dietary_Requirements.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/app/Models/Course.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/app/Models/Booking.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/app/Models/Venue.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/.gitattributes",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/views/uploadfile.blade.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/assets/js/components/Progress.jsx",
+		"/Users/admin/Library/Containers/com.apple.mail/Data/Library/Mail Downloads/0B6D7A9C-8630-4BE4-8F6C-5E05C7410858/RFQ_Rumdel Construction.html",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/config/app.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/public/js/app.js",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/app/Http/Controllers/QRCodeController.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/vendor/khanamiryan/qrcode-detector-decoder/lib/QrReader.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/vendor/khanamiryan/qrcode-detector-decoder/lib/Reader.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/views/layouts/qrcode.blade.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/composer.lock",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/views/index.blade.php",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/README.md",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/assets/js/app.jsx",
+		"/Users/admin/Programming/Classicseminars/AdminSystem/Prototype/resources/views/app.blade.php",
+		"/Users/admin/Programming/CCC level3/level3-4-solution.txt",
+		"/Users/admin/Programming/CCC level3/level3-3-solution.txt",
+		"/Users/admin/Programming/CCC level3/level3-3.txt",
+		"/Users/admin/Programming/CCC level3/level3.py",
+		"/Users/admin/Programming/CCC level3/expected 3-3",
+		"/Users/admin/Programming/CCC level3/level3-weird.py",
+		"/Users/admin/Programming/CCC level3/level3-eg.txt",
+		"/Users/admin/Programming/CCC level3/level3-1-solution.txt",
+		"/Users/admin/Programming/CCC level3/level3-eg-solution.txt",
+		"/Users/admin/Programming/CCC level3/makefile",
+		"/Users/admin/Programming/CCC level3/level2.py",
+		"/Users/admin/Programming/CCC level2/makefile",
+		"/Users/admin/Programming/CCC level2/level2-eg.txt",
+		"/Users/admin/Programming/CCC level2/level2-1.txt",
+		"/Users/admin/Programming/CCC level1/contest/level1.py",
+		"/Users/admin/Programming/CCC level2/level2.py",
+		"/Users/admin/Programming/CCC level2/level2-2.txt",
+		"/Users/admin/Programming/CCC level2/level2-4-solution.txt",
+		"/Users/admin/Downloads/Try2 prac4/allocator.cpp",
+		"/Users/admin/Downloads/Try2 prac4/main.cpp",
+		"/Users/admin/Downloads/Try2 prac4/meminfo.cpp",
+		"/Users/admin/Downloads/Try2 prac4/makefile",
+		"/Users/admin/Downloads/Try2 prac4/makefile_task1"
+	],
+	"find":
+	{
+		"height": 41.0
+	},
+	"find_in_files":
+	{
+		"height": 107.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"christ",
+			"anal",
+			"sex",
+			"fuc",
+			"userjoined",
+			"addPerson",
+			" window.setTimeout(function() {\n            $(\"#showGuesses .guessers\").html(guessers);            \n        }, 2000);",
+			"clients.length",
+			"guess",
+			"join",
+			"'",
+			"clientList",
+			"user",
+			"'"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"\"",
+			"clients",
+			"\""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 23503,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11497,
+								11497
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1376.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "public/assets/js/player.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6492,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2494,
+								2494
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1157.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "public/host.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2255,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1580,
+								1580
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 288.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "public/assets/js/host.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4849,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3444,
+								3444
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1150.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "public/assets/css/host.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 522,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								520,
+								520
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "public/assets/css/styles.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1158,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								501,
+								501
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 185.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "public/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3190,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1635,
+								1635
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 192.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 41.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 120.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/Makefile/Make.sublime-build",
+	"project": "drawgly.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/Programming/Orrin/lt.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 319.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

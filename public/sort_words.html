@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+    <title>Drawsome</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta content="yes" name="mobile-web-app-capable">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+
+    <link rel="stylesheet" href="/bower_components/drawingboard.js/dist/drawingboard.nocontrol.min.css">
+    <link rel="stylesheet" href="/bower_components/materialize/dist/css/materialize.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+
+<body style="background-color: #888888;">
+    <div style="width: 300px; margin: auto; text-align: center;">
+        <p class="word" id="word" style="color: white; text-align: center; font-size:20px;"></p>
+        <p id="hiddenWord" style="display:none"></p>
+    </div>
+    <div style="width: 300px; margin: auto; text-align: center;">
+        <button class="btn" id="yes">Yes</button>
+        <button class="btn" id="no">No</button><br><!-- 
+        <p class="word" id="heVerb" style="color: white; text-align: center; font-size:20px;"></p>
+        <button class="btn" id="verbs">Verbs</button> -->
+    </div>
+
+<!-- <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script> -->
+    <script src="/node_modules/socket.io-client/socket.io.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/materialize/dist/js/materialize.js"></script>
+    <script>
+        var socket = io();
+        socket.emit("getPhrase");
+        socket.on("phrase", function(data) {
+            //alert(data.phrase);
+            $('#word').text(data.phrase);
+            // $('#heVerb').text("He " + data.word);
+            $("#hiddenWord").text(data.phrase);
+        });
+        var currentColorRed = 128;
+        var currentColorGreen = 128;
+        var currentColorBlue = 128;
+
+        function respond(response) {
+            socket.emit("getPhrase");
+            socket.emit("recordPhrase", {phrase: $("#hiddenWord").text(), response: response});
+            console.log("sent " + (response?"true":"false"));
+            var step = 30;
+            currentColorBlue = Math.round(Math.min(255,Math.max(0,currentColorBlue+Math.random()*step-step/2)));
+            currentColorRed = Math.round(Math.min(255,Math.max(0,currentColorRed+Math.random()*step-step/2)));
+            currentColorGreen = Math.round(Math.min(255,Math.max(0,currentColorGreen+Math.random()*step-step/2)));
+            $("body").css("background-color","rgb("+currentColorRed+","+currentColorBlue+","+currentColorGreen+")");
+            textColor = (currentColorGreen*currentColorGreen + currentColorRed*currentColorRed + currentColorBlue*currentColorBlue) > 75000?"#000000":"#ffffff";
+            $(".word").css("color", textColor);
+        }
+        $("#yes").on("click", function() {
+            respond(1);
+        });
+        $("#no").on("click", function() {
+            respond(0);
+        });
+        $("#verbs").on("click", function() {
+            respond(2);
+        });
+        $("body").on("keyup", function(event) {
+            if(event.key == "n" || event.key == "ArrowRight"){
+                respond(0);
+            } else if(event.key == "y" || event.key == "ArrowLeft"){
+                respond(1);
+            } else if(event.key == "ArrowDown" || event.key == v){
+                respond(2)
+            } else {
+                console.log(event.key);
+            }
+        });
+    </script>
+</body>
+</html>

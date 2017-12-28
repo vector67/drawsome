@@ -1,0 +1,88 @@
+.center-block {
+    text-align: center;
+}
+
+#createGame {
+    margin-top: 20px;
+}
+
+#announcements {
+    font-size: 2em;
+    margin-top: 10px;
+}
+#announcements li {
+    line-height: 2rem;
+}
+#roomCode {
+    margin-bottom: 50px;
+    font-weight: 600;
+    padding: 10px 50px;
+    border: 7px solid #eFeF70;
+    background-color: black;
+    color: #eFeF70;
+    letter-spacing: 10px;
+    text-align: center;
+    display: inline-block;
+}
+
+.collection .collection-item.user:nth-last-child(2) {
+    border: none;
+}
+.collection .user{
+    padding-left: 180px;
+    position: relative;
+    height: 160px;
+    float: left;
+    width: 49%;
+}
+
+.collection .user .title {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.collection .user img {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+}
+
+.page {
+    display: none;
+}
+
+#timeLeft .small {
+    font-size: 0.7em;
+    color: rgba(0,0,0,0.7);
+}
+#showGuesses {
+    text-align: center;
+}
+.guessers li {
+    display: inline-block;
+    margin: 0 20px;
+}
+.right-answer {
+    color: #11BB41;
+    padding-left: 20px;
+}
+.guess-image-title {
+    text-align: center;
+}
+.guess-image {
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+}
+.description-container {
+    margin-top: 50px;
+}
+.description-container, .people-with-descriptions-container {
+    min-height: 1px;
+}
+.description-container p, .people-with-descriptions-container p {
+    font-size: 3em;
+}
+.description-container.left p, .people-with-descriptions-container.left p {
+    text-align: right;
+}
