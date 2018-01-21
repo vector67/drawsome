@@ -1,9 +1,30 @@
+@font-face {
+    font-family: 'Amatic';
+    src: url('fonts/AmaticSC-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Amatic';
+    src: url('fonts/Amatic-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+body {
+    font-family: 'Helvetica', sans-serif; /*'Amatic'*/
+    font-weight: bold;
+    font-size:17px;
+}
 nav {
     display: none;
     border-bottom:5px dotted black;
     box-shadow: none;
     z-index: 22;
     position: relative;
+}
+
+.input-field label, .input-field input, #descriptionpp {
+    font-size: 1em;
 }
 #guesses {
     display: none;

@@ -181,11 +181,13 @@ socket.on("drawingSent", function(data) {
 
 socket.on("youDrewThis", function(data) {
     endDrawing();
+    $("#guesses").hide();
     $("#instructions").html("You drew this.<br>" + data.phrase);
 });
 
 socket.on("makeDescription", function() {
     endDrawing();
+    $("#guesses").hide();
     $("#instructions").text("Type in what you think the drawing is:");
     $("#makeDescription").show();
     $("#makeDescription input").val("");
@@ -193,6 +195,16 @@ socket.on("makeDescription", function() {
 
 socket.on("descriptionSent", function() {
     $("#instructions").text("Thanks for your description.");
+    $("#makeDescription").hide();
+    $("#sendDescription").removeClass("disabled");
+});
+socket.on("sameAnswer", function() {
+    $("#instructions").text("Your description was too similar to someone elses, please write a different description.");
+    $("#sendDescription").removeClass("disabled");
+});
+
+socket.on("rightAnswer", function() {
+    $("#instructions").text("Thanks for your correct description good job, you don't get to guess.");
     $("#makeDescription").hide();
     $("#sendDescription").removeClass("disabled");
 });

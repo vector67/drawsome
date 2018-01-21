@@ -30,18 +30,23 @@
             <ul class="collection" id="side_scoreboard"></ul>
         </div>
     </div>
-    <div class="page" id="busyDrawing">
-        <div class="time-container">
-            <p id="timeLeft"></p>
+    <div class="row page" id="busyDrawing">
+    <!-- <div class="row" id="busyDrawing"> -->
+        <div class="col l4 people-with-drawings-container left">
+        </div>
+        <div class="col l4 time-container">
+            <h1 id="timeLeft" class="time-left">3:00</h1>
+        </div>
+        <div class="col l4 people-with-drawings-container right">
         </div>
     </div>
     <div class="page row" id="guessingRound">
-
         <div class="col l4 people-with-descriptions-container left">
         </div>
         <div class="col l4">
             <h3 class="guess-image-title">What do you think it is?</h3>
             <img class="guess-image" width="400" />
+            <p class="time-left text-center"></p>
         </div>
         <div class="col l4 people-with-descriptions-container right">
         </div>
@@ -53,6 +58,7 @@
         <div class="col l4">
             <h3 class="guess-image-title">What do you think it is?</h3>
             <img class="guess-image" width="400" />
+            <p class="time-left text-center"></p>
         </div>
         <div class="col l4 description-container right">
         </div>
@@ -82,6 +88,7 @@
     <script src="/bower_components/drawingboard.js/dist/drawingboard.nocontrol.min.js"></script>
     <script src="/node_modules/materialize-css/dist/js/materialize.min.js"></script>
     <script src="/node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="/node_modules/howler/dist/howler.min.js"></script>
     <script src="/assets/js/host.js"></script>
 </body>
 </html>

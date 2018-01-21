@@ -5,7 +5,9 @@ var io = require("socket.io").listen(server);
 var fs = require('fs'),
     path = require('path'),
     util = require('util');
-var drawTime = 90; // Time to draw your prompt
+var drawTime = 120; // Time to draw your prompt
+var descriptionTime = 80; // Time to write your description
+var guessingTime = 60; // Time to make your guess
 var youDrewThisPrompts = [
     "I would pay for a psychologist, but I think I'd be wasting my money.",
     "Maybe you should go take a nap.",
@@ -59,6 +61,7 @@ var Room = function(id, hostSocket) {
     this.gameStarted = false;
     this.numPeoplePlaying = 0;
     this.disconnected = false;
+    this.currentDescriptions = [];
     hostSocket.on("disconnect", function() {
         setTimeout(function() {
             if(self.disconnected) {
@@ -175,7 +178,7 @@ var Room = function(id, hostSocket) {
     };
 
     this.checkRoundTimer = function() {
-        if(self.drawingsLeft == 0)
+        if(self.drawingsLeft <= 0)
             return;
         var now = Date.now();
         var millisLeft = drawTime*1000 - (now - self.roundTimeStarted);
@@ -191,6 +194,7 @@ var Room = function(id, hostSocket) {
     };
 
     this.startRound = function() {
+        self.drawingsLeft = -1;
         self.roundOrder = [];
         var tempClientNames = Object.keys(self.clients);
         var numClients = tempClientNames.length;
@@ -204,8 +208,11 @@ var Room = function(id, hostSocket) {
     };
 
     this.addImage = function(client, image) {
+        if(self.drawingsLeft == 0)
+            return;
         self.clients[client].roundImage = image;
         self.clients[client].socket.emit("drawingSent");
+        self.hostSocket.emit("drawingSent", {username: client});
         self.drawingsLeft -= 1;
         if(self.drawingsLeft == 0) {
             self.startRound();
@@ -213,6 +220,7 @@ var Room = function(id, hostSocket) {
     };
 
     this.startGuessingRound = function() {
+        self.drawingsLeft = 0;
         self.currentClient = self.clients[self.roundOrder[0]];
         self.roundOrder.splice(0,1);
         for(i in self.clients) {
@@ -222,44 +230,86 @@ var Room = function(id, hostSocket) {
                 client.description = "";
             }
         }
-        self.currentClient.description = self.currentClient.currentPhrase;
+        self.currentClient.description = (self.currentClient.currentPhrase+"").toLowerCase();
         self.currentClient.socket.emit("youDrewThis", {phrase: youDrewThisPrompts[Math.floor(Math.random() * youDrewThisPrompts.length)]});
-        self.hostSocket.emit("startGuessingRound", {image: self.currentClient.roundImage});
+        self.hostSocket.emit("startGuessingRound", {image: self.currentClient.roundImage, timeLeft: descriptionTime});
         self.clientDescriptionsLeft = self.numPeoplePlaying - 1;
+        self.rightClients = 0;
+        self.descriptionRoundTimeStarted = Date.now();
+        self.currentDescriptions = [];
+        self.checkDescriptionMakingTimer();
         console.log("Waiting for " + self.clientDescriptionsLeft + " people to give descriptions");
     };
 
+    this.checkDescriptionMakingTimer = function() {
+        if(self.clientDescriptionsLeft <= 0)
+            return;
+        var now = Date.now();
+        var millisLeft = descriptionTime*1000 - (now - self.descriptionRoundTimeStarted);
+        if(millisLeft <= 0) {
+            self.showDescriptions();
+        } else if(millisLeft < 500) {
+            setTimeout(self.checkDescriptionMakingTimer, 25);
+        } else if(millisLeft < 5000) {
+            setTimeout(self.checkDescriptionMakingTimer, 250);
+        } else {
+            setTimeout(self.checkDescriptionMakingTimer, 2500);
+        }
+    };
+
     this.addDescription = function(client, description) {
-        self.clients[client].description = description;
-        self.clients[client].socket.emit("descriptionSent");
+        if(self.clientDescriptionsLeft == 0) 
+            return;
+        var cleanDescription = (description+"").toLowerCase();
+        if(cleanDescription == self.currentClient.currentPhrase) {
+            self.rightClients += 1;
+            self.clients[client].right = true;
+            self.clients[client].points += 1500;
+            self.clients[client].socket.emit("rightAnswer");
+        } else {
+            if(self.currentDescriptions.indexOf(cleanDescription) == -1) {
+                self.currentDescriptions.push(cleanDescription);
+                //self.clients[client].description = ;
+                self.clients[client].description = cleanDescription;
+                self.clients[client].right = false;
+                self.clients[client].socket.emit("descriptionSent");
+            } else {
+                self.clients[client].socket.emit("sameAnswer");
+                return;
+            }
+        }
         self.hostSocket.emit("clientAddedDescription", {username: client});
         self.clientDescriptionsLeft -= 1;
         console.log("Waiting for " + self.clientDescriptionsLeft + " people to give descriptions");
-        console.log("Recorded " + description + " for " + client);
+        console.log("Recorded " + cleanDescription + " for " + client);
         if(self.clientDescriptionsLeft == 0) {
             self.showDescriptions();
         }
     };
 
     this.showDescriptions = function() {
+        self.clientDescriptionsLeft = 0;
         self.currentClient.peopleGuessed = [];
         self.currentClient.guessed = true;
-        var allDescriptions = [];
+        var allDescriptions = self.currentDescriptions;
         allDescriptions.push(self.currentClient.description);
         for(i in self.clients) {
             if(self.clients.hasOwnProperty(i) && self.currentClient != self.clients[i]){
                 var client = self.clients[i];
                 var guesses = [];
-                for(j in self.clients) {
-                    if(self.clients.hasOwnProperty(j) && client != self.clients[j]){
-                        guesses.push({username: j, guess: self.clients[j].description});
+                var plainGuesses = [];
+                for(var j in self.clients) {
+                    if(self.clients.hasOwnProperty(j) && client != self.clients[j] && plainGuesses.indexOf(self.clients[j].description) == -1){
+
+                        guesses.splice(Math.floor((guesses.length+1)*Math.random()), 0, {username: j, guess: self.clients[j].description});
+                        plainGuesses.push(self.clients[j].description);
                     }
                 }
                 client.guessed = false;
-                client.socket.emit("makeGuess", {guesses: guesses});
+                if(!client.right) {
+                    client.socket.emit("makeGuess", {guesses: guesses});
+                }
                 client.peopleGuessed = [];
-
-                allDescriptions.push(client.description);
             }
         }
         var randomized = [];
@@ -268,12 +318,31 @@ var Room = function(id, hostSocket) {
             var position = Math.floor(Math.random()*randomized.length);
             randomized = randomized.slice(0,position).concat(guess).concat(randomized.slice(position,randomized.length));
         }
-        self.hostSocket.emit("showDescriptions", randomized);
-        self.clientGuessesLeft = self.numPeoplePlaying - 1;
+        self.hostSocket.emit("showDescriptions", {descriptions: randomized, timeLeft: guessingTime});
+        self.clientGuessesLeft = self.numPeoplePlaying - 1 - self.rightClients;
+        self.guessingRoundTimeStarted = Date.now();
+        self.checkGuessMakingTimer();
         console.log("Waiting for " + self.clientGuessesLeft + " people to give guesses");
     };
 
+    this.checkGuessMakingTimer = function() {
+        if(self.clientGuessesLeft == 0)
+            return;
+        var now = Date.now();
+        var millisLeft = guessingTime*1000 - (now - self.guessingRoundTimeStarted);
+        if(millisLeft <= 0) {
+            self.endGuessingRound();
+        } else if(millisLeft < 500) {
+            setTimeout(self.checkGuessMakingTimer, 25);
+        } else if(millisLeft < 5000) {
+            setTimeout(self.checkGuessMakingTimer, 250);
+        } else {
+            setTimeout(self.checkGuessMakingTimer, 2500);
+        }
+    };
     this.addGuess = function(client, guess) {
+        if(self.clientGuessesLeft == 0)
+            return;
         self.clients[client].guessed = true;
         self.clients[guess].peopleGuessed.push(client);
         self.clients[client].socket.emit("guessSent");
@@ -285,6 +354,7 @@ var Room = function(id, hostSocket) {
     };
 
     this.endGuessingRound = function() {
+        self.clientGuessesLeft = 0;
         var whoGuessedWho = [];
 
         for(i in self.clients) {
@@ -433,9 +503,15 @@ function loadCustomWords() {
     // nounsFilePath = path.join(__dirname, '/pos/nouns/1syllablenouns.txt');
     // nounsFilePath = path.join(__dirname, '/pos/nouns/91K nouns.txt');
     nounsFilePath = path.join(__dirname, '/pos/nouns/list.txt');
+    // nounsFilePath = path.join(__dirname, '/pos/printables.txt');
     nounstring = fs.readFileSync(nounsFilePath, {encoding: 'utf-8'});
     nouns = nounstring.split(/\r?\n/);
     numNouns = nouns.length;
+
+    animals = fs.readFileSync(path.join(__dirname, '/pos/nouns/animals.txt'), {encoding: 'utf-8'}).split(/\r?\n/);
+    food = fs.readFileSync(path.join(__dirname, '/pos/nouns/food.txt'), {encoding: 'utf-8'}).split(/\r?\n/);
+    people = fs.readFileSync(path.join(__dirname, '/pos/nouns/people.txt'), {encoding: 'utf-8'}).split(/\r?\n/);
+    things = fs.readFileSync(path.join(__dirname, '/pos/nouns/things.txt'), {encoding: 'utf-8'}).split(/\r?\n/);
 
     // verbsFilePath = path.join(__dirname, '/pos/verbs/1syllableverbs.txt');
     // verbsFilePath = path.join(__dirname, '/pos/verbs/31K verbs.txt');
@@ -470,6 +546,20 @@ function createRandomPhrase(difficulty) {
         'adjective noun',
         'adjective noun',
         'adjective noun',
+        'the adjective animal verb(ed) the food',
+        'the animal verb(ed) the food',
+        'the animal ate the food',
+        'the adjective animal ate the food',
+        'the adjective food was made by person with a thing',
+        'the food was made by person with a thing',
+        'the adjective food was made with a thing',
+        'the adjective food was made with a adjective thing',
+        'the food was made with a thing',
+        'person ate some food',
+        'verb the food',
+        'verb the animal',
+        'verb person',
+        'eat the food',
         'adjective adjective noun',
         // 'adjective adjective noun',
         //'adjective adjective adjective noun',
@@ -491,34 +581,59 @@ function createRandomPhrase(difficulty) {
         if(new_phrase.indexOf('|adverb|') != -1) {
             new_adverb_index = Math.floor(Math.random() * adverbs.length);
             new_phrase = new_phrase.replace('|adverb|', adverbs[new_adverb_index]);
-            //adverbs.splice(new_adverb_index, 1);
+            adverbs.splice(new_adverb_index, 1);
         }
 
         if(new_phrase.indexOf('|noun|') != -1) {
             new_noun_index = Math.floor(Math.random() * nouns.length);
             new_phrase = new_phrase.replace('|noun|', nouns[new_noun_index]);
-            //nouns.splice(new_noun_index, 1);
+            nouns.splice(new_noun_index, 1);
         }
 
         if(new_phrase.indexOf('|adjective|') != -1) {
             new_adjective_index = Math.floor(Math.random() * adjectives.length);
             new_phrase = new_phrase.replace('|adjective|', adjectives[new_adjective_index]);
-            //adjectives.splice(new_adjective_index, 1);
+            adjectives.splice(new_adjective_index, 1);
+        }
+
+        if(new_phrase.indexOf('|animal|') != -1) {
+            new_index = Math.floor(Math.random() * animals.length);
+            new_phrase = new_phrase.replace('|animal|', animals[new_index]);
+            animals.splice(new_index, 1);
+        }
+
+        if(new_phrase.indexOf('|food|') != -1) {
+            new_index = Math.floor(Math.random() * food.length);
+            new_phrase = new_phrase.replace('|food|', food[new_index]);
+            food.splice(new_index, 1);
+        }
+
+        if(new_phrase.indexOf('|thing|') != -1) {
+            new_index = Math.floor(Math.random() * things.length);
+            new_phrase = new_phrase.replace('|thing|', things[new_index]);
+            things.splice(new_index, 1);
+        }
+
+        if(new_phrase.indexOf('|person|') != -1) {
+            new_index = Math.floor(Math.random() * people.length);
+            new_phrase = new_phrase.replace('|person|', people[new_index]);
+            people.splice(new_index, 1);
         }
 
         if(new_phrase.indexOf('|verb|') != -1) {
             new_verb_index = Math.floor(Math.random() * verbs.length);
             new_phrase = new_phrase.replace('|verb|', verbs[new_verb_index]);
-            //verbs.splice(new_verb_index, 1);
+            verbs.splice(new_verb_index, 1);
         }
 
         if(new_phrase.indexOf('|verb(ed)|') != -1) {
             new_verb_index = Math.floor(Math.random() * verbs.length);
             new_phrase = new_phrase.replace('|verb(ed)|', verbs[new_verb_index] + "(ed)");
-            //verbs.splice(new_verb_index, 1);
+            verbs.splice(new_verb_index, 1);
         }
-        new_phrase = new_phrase.replace(/\|the\|/g, "the");
+        //new_phrase = new_phrase.replace(/\|the\|/g, "the");
     } while(new_phrase != old_phrase);
+        new_phrase = new_phrase.replace(/\|/g, "");
 
     // console.log("adverbs" + adverbs.length);
     // console.log("verbs" + verbs.length);
@@ -562,7 +677,13 @@ app.use("/node_modules",
         })
     );
 //app.use("/node_modules",  express.static(__dirname + "/node_modules"));
-
+loadCustomWords();
+var previous_word_index = 0;
+var sequential = true;
+var remove_from_list = false;
+var giveList = nouns;
+var storeTo = "/pos/phrases-new.txt";
+var storeBad = "/pos/phrases-bad.txt";
 io.on("connection", function(socket, opts){
 
     socket.on("add user", function(data){
@@ -624,7 +745,20 @@ io.on("connection", function(socket, opts){
         socket.join(roomID);
 
         console.log("Created game "+roomID);
-        io.to(roomID).emit("created", roomID);
+        var soundFiles = {};
+        const fs = require('fs');
+        fs.readdirSync("public/assets/sounds/phrases").forEach(file => {
+            var soundFile = file.substring(0, file.length - 4);
+            var num = soundFile.replace( /^\D+/g, '');
+            //var num = parseInt(soundFile);
+            var key = soundFile.substring(0, soundFile.length - (num+"").length);
+            if(!(key in soundFiles)) {
+                soundFiles[key] = [];
+            }
+            soundFiles[key].push(parseInt(num));
+        })
+        //console.log(soundFiles);
+        io.to(roomID).emit("created", {msg: roomID, soundFiles: soundFiles});
     });
 
     socket.on("start_game", function(data){
@@ -667,20 +801,34 @@ io.on("connection", function(socket, opts){
 
     socket.on("give_word", function(data){
         console.log("giving word");
-        socket.emit("new_word", {word: adjectives[Math.floor(Math.random() * numAdjectives)]});
+        var word_index = 0;
+        var phrase = "";
+        phrase = createRandomPhrase();
+        // if(sequential) {
+        //     word_index = previous_word_index++;
+        //     phrase = giveList[word_index]
+        // } else {
+        //     word_index = Math.floor(Math.random() * giveList.length);
+        //     phrase = giveList[word_index];
+        // }
+        socket.emit("newCheckPhrase", {phrase: phrase});
+        if(remove_from_list) {
+            giveList.splice(word_index, 1);
+            if(sequential) {
+                previous_word_index--;
+            }
+        }
+
         // socket.emit("new_word", {word: adverbs[Math.floor(Math.random() * numAdverbs)]});
         // socket.emit("new_word", {word: nouns[Math.floor(Math.random() * numNouns)]});
         // socket.emit("new_word", {word: verbs[Math.floor(Math.random() * numVerbs)]});
     });
 
     socket.on("response", function(data){
-        type = "adjectives";
         if(data.response == 1) {
-            fs.appendFileSync(path.join(__dirname, "/pos/" + type + "/list.txt"), data.word + "\n");
-        } else if(data.response == 2){
-            fs.appendFileSync(path.join(__dirname, "/pos/" + type + "/heVerbs.txt"), data.word + "\n");
+            fs.appendFileSync(path.join(__dirname, storeTo), data.phrase + "\n");
         } else {
-            fs.appendFileSync(path.join(__dirname, "/pos/" + type + "/banned.txt"), data.word + "\n");
+            fs.appendFileSync(path.join(__dirname, storeBad), data.phrase + "\n");
         }
     });
 });

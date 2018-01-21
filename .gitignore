@@ -30,4 +30,5 @@ bower_components
 # Sublime project files
 drawsome.sublime-project
 drawsome.sublime-workspace
+
 *.DS_STORE*

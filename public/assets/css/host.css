@@ -1,3 +1,21 @@
+@font-face {
+    font-family: 'Amatic';
+    src: url('fonts/AmaticSC-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Amatic';
+    src: url('fonts/Amatic-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+body {
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    /*font-family: 'Amatic';*/
+    font-size: 30px;
+}
 .center-block {
     text-align: center;
 }
@@ -14,6 +32,7 @@
     line-height: 2rem;
 }
 #roomCode {
+    font-family: Arial, sans-serif;
     margin-bottom: 50px;
     font-weight: 600;
     padding: 10px 50px;
@@ -50,6 +69,11 @@
 .page {
     display: none;
 }
+#timeLeft, .time-left {
+    text-align:center;
+    font-size: 200px;
+    line-height: 200px;
+}
 
 #timeLeft .small {
     font-size: 0.7em;
@@ -77,7 +101,7 @@
 .description-container {
     margin-top: 50px;
 }
-.description-container, .people-with-descriptions-container {
+.description-container, .people-with-descriptions-container, .people-with-drawings-container {
     min-height: 1px;
 }
 .description-container p, .people-with-descriptions-container p {
